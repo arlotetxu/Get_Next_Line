@@ -1,0 +1,19 @@
+{
+	"version": "0.2.0",
+	"configurations": [
+	  {
+		"name": "get_next_line",
+		"type": "cppdbg",
+		"request": "launch",
+		"program": "${fileDirname}/a.out",
+		"args": [],
+		"stopAtEntry": false,
+		"cwd": "${workspaceFolder}",
+		"environment": [],
+		"externalConsole": false,
+		"MIMode": "lldb",
+		"preLaunchTask": "comp",
+		"postDebugTask": "clean"
+	  }
+	]
+  }

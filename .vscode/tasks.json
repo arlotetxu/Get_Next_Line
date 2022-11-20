@@ -1,0 +1,37 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "comp",
+            "command": "rm -rf exec && gcc -g3 *.c get_next_line.h",
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "detail": "Custom Debugger"
+        },
+        {
+            "type": "shell",
+            "label": "clean",
+            "command": "rm -rf *",
+            "options": {
+                "cwd": "/tmp"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "detail": "Custom Debugger"
+        }
+    ]
+}
