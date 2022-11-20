@@ -31,8 +31,11 @@ int	ft_strchr(const char *s, int c)
 /*		DESCRIPTION
   		***********
   		The ft_substr creates a substring starting from the start value
-  		parameter and with the total size of 'len' paramete/*   Updated: 2022/11/20 13:51:06 by jflorido         ###   ########.fr       */i;
+  		parameter and with the total size of 'len' parameter */
+char	*ft_substr(char const *s, unsigned int start, size_t len)
+{
 	size_t	j;
+	size_t	i;
 	char	*ptr;
 
 	if (!s)

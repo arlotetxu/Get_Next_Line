@@ -21,7 +21,7 @@ char	*ft_read_file(int fd, char *aux, int *check)
 	buff = malloc(sizeof(char) * BUFFER_SIZE + 1);
 	if (buff == NULL)
 		return (NULL);
-	*check = read(fd, buff, BUFFE/*   Updated: 2022/11/20 13:51:06 by jflorido         ###   ########.fr       */k);
+	*check = read(fd, buff, BUFFER_SIZE);
 	//printf("Data stored in BUFF: %s\n", buff);
 	aux = ft_strjoin_gnl(aux, buff);
 	free(buff);
@@ -30,11 +30,10 @@ char	*ft_read_file(int fd, char *aux, int *check)
 	return (aux);
 }
 
-/*
- * The function that controls the program execution.
- * WARNING: How to know if you are reading the last line.
- * We control this thaks to the value in the check variable
- */
+/* 
+  The function that controls the program execution.
+  ALARM: How to know if you are reading the last line.
+  We control this thaks to the value in the check variable */
 char *get_next_line(int fd)
 {
 	static char *aux;
