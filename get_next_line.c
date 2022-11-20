@@ -77,8 +77,6 @@ int	main(void)
 	printf("Testeando segundo resultado: %s\n", test);
 	test = get_next_line(fd);
 	printf("Testeando tercer resultado: %s\n", test);
-	test = get_next_line(fd);
-	printf("Testeando cuarto resultado: %s\n", test);
 	return (0);
 }
 
