@@ -6,7 +6,7 @@
 /*   By: jflorido <jflorido@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 18:38:50 by jflorido          #+#    #+#             */
-/*   Updated: 2022/11/26 15:59:37 by jflorido         ###   ########.fr       */
+/*   Updated: 2022/11/26 16:18:46 by jflorido         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,9 @@ char	*get_next_line(int fd)
 		}
 	}
 	
-	while (aux[i] && aux[i] != '\n') //TODO Line en la que ocurre el segmentation fault
-		i++;
+	if (aux)
+		while (aux[i] && aux[i] != '\n') //TODO Line en la que ocurre el segmentation fault
+			i++;
 	line = ft_substr(aux, 0, i);
 	aux = ft_substr(aux, i + 1, ft_strlen(aux) - ft_strlen(line));
 	if (ft_strlen(line) == 0)
@@ -77,7 +78,7 @@ char	*get_next_line(int fd)
 	return (line);
 }
 
-int	main(void)
+/*int	main(void)
 {
 	int		fd;
 	char	*test;
@@ -96,4 +97,4 @@ int	main(void)
 	test = get_next_line(fd);
 	printf("Testeando tercer resultado: %s\n", test);
 	return (0);
-}
+}*/
