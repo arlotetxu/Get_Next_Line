@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jflorido <jflorido@student.42urduliz.co    +#+  +:+       +#+        */
+/*   By: jflorido <jflorido@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 18:38:50 by jflorido          #+#    #+#             */
-/*   Updated: 2022/11/24 17:48:42 by jflorido         ###   ########.fr       */
+/*   Updated: 2022/11/26 15:59:37 by jflorido         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,11 @@ char	*ft_read_file(int fd, char *aux, int *check)
 	if (buff == NULL)
 		return (NULL);
 	*check = read(fd, buff, BUFFER_SIZE);
-	buff[*check + 1] = '\0';
+	if (*check <= 0)
+		return (NULL);
+	buff[*check] = '\0';
 	aux = ft_strjoin_gnl(aux, buff);
-	free(buff);
+	// free(buff);
 	buff = NULL;
 	return (aux);
 }
@@ -51,26 +53,31 @@ char	*get_next_line(int fd)
 	int			check;
 
 	i = 0;
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	if (fd < 0 || BUFFER_SIZE <= 0 || fd > 1024)
 		return (NULL);
 	check = 1;
-	while (check != 0 && ft_strchr(aux, '\n') == 0)
+	while (check != 0)
 	{
+		if (ft_strchr(aux, '\n') >= 0)
+			break ;
 		aux = ft_read_file(fd, aux, &check);
-		if (check == -1)
+		if (check == -1) //TODO comprobaar que ocurre con check <= 0
 		{
-			free (aux);
+			// free (aux);
 			return (NULL);
 		}
 	}
-	while (aux[i] && aux[i] != '\n')
+	
+	while (aux[i] && aux[i] != '\n') //TODO Line en la que ocurre el segmentation fault
 		i++;
 	line = ft_substr(aux, 0, i);
 	aux = ft_substr(aux, i + 1, ft_strlen(aux) - ft_strlen(line));
+	if (ft_strlen(line) == 0)
+		return (NULL);
 	return (line);
 }
 
-/*int	main(void)
+int	main(void)
 {
 	int		fd;
 	char	*test;
@@ -90,4 +97,3 @@ char	*get_next_line(int fd)
 	printf("Testeando tercer resultado: %s\n", test);
 	return (0);
 }
-*/

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jflorido <jflorido@student.42urduliz.co    +#+  +:+       +#+        */
+/*   By: jflorido <jflorido@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 18:36:10 by jflorido          #+#    #+#             */
-/*   Updated: 2022/11/24 17:52:42 by jflorido         ###   ########.fr       */
+/*   Updated: 2022/11/26 13:34:26 by jflorido         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	ft_strchr(const char *s, int c)
 	char	*str;
 
 	if (!s)
-		return (0);
+		return (-1);
 	str = (char *)s;
 	i = 0;
 	while (str[i] != '\0')
@@ -35,7 +35,7 @@ int	ft_strchr(const char *s, int c)
 	}
 	if (((char)c) == '\0')
 		return (i);
-	return (0);
+	return (-1);
 }
 
 /*		
@@ -61,7 +61,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		return (NULL);
 	while (s[i] != '\0')
 	{
-		if (i >= start && j < len)
+		if (i >= start && j <= len)
 		{
 			ptr[j] = s[i];
 			j++;
