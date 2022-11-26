@@ -6,7 +6,7 @@
 /*   By: jflorido <jflorido@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 18:38:50 by jflorido          #+#    #+#             */
-/*   Updated: 2022/11/21 19:05:06 by jflorido         ###   ########.fr       */
+/*   Updated: 2022/11/24 17:48:42 by jflorido         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ char	*ft_read_file(int fd, char *aux, int *check)
 	if (buff == NULL)
 		return (NULL);
 	*check = read(fd, buff, BUFFER_SIZE);
+	buff[*check + 1] = '\0';
 	aux = ft_strjoin_gnl(aux, buff);
 	free(buff);
 	buff = NULL;
@@ -56,6 +57,11 @@ char	*get_next_line(int fd)
 	while (check != 0 && ft_strchr(aux, '\n') == 0)
 	{
 		aux = ft_read_file(fd, aux, &check);
+		if (check == -1)
+		{
+			free (aux);
+			return (NULL);
+		}
 	}
 	while (aux[i] && aux[i] != '\n')
 		i++;
@@ -64,7 +70,7 @@ char	*get_next_line(int fd)
 	return (line);
 }
 
-int	main(void)
+/*int	main(void)
 {
 	int		fd;
 	char	*test;
@@ -84,3 +90,4 @@ int	main(void)
 	printf("Testeando tercer resultado: %s\n", test);
 	return (0);
 }
+*/

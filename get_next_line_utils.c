@@ -6,7 +6,7 @@
 /*   By: jflorido <jflorido@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 18:36:10 by jflorido          #+#    #+#             */
-/*   Updated: 2022/11/21 18:29:31 by jflorido         ###   ########.fr       */
+/*   Updated: 2022/11/24 17:52:42 by jflorido         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,9 +122,10 @@ char	*ft_strjoin_gnl(char const *s1, char const *s2)
 	j = 0;
 	while (s2[j])
 	{
-		n_str[i + j] = s2[j];
+		n_str[i] = s2[j];
+		i++;
 		j++;
 	}
-	n_str[i + j] = '\0';
+	n_str[i] = '\0';
 	return (n_str);
 }
