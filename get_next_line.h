@@ -6,7 +6,7 @@
 /*   By: jflorido <jflorido@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 18:29:46 by jflorido          #+#    #+#             */
-/*   Updated: 2022/11/24 17:43:23 by jflorido         ###   ########.fr       */
+/*   Updated: 2022/11/27 19:52:42 by jflorido         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define GET_NEXT_LINE_H
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 41
+#  define BUFFER_SIZE 1
 # endif
 
 # include <fcntl.h>

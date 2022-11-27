@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jflorido <jflorido@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jflorido <jflorido@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 18:38:50 by jflorido          #+#    #+#             */
-/*   Updated: 2022/11/26 16:18:46 by jflorido         ###   ########.fr       */
+/*   Updated: 2022/11/27 19:36:30 by jflorido         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ char	*ft_read_file(int fd, char *aux, int *check)
 		return (NULL);
 	*check = read(fd, buff, BUFFER_SIZE);
 	if (*check <= 0)
-		return (NULL);
+		return (aux);
 	buff[*check] = '\0';
 	aux = ft_strjoin_gnl(aux, buff);
 	// free(buff);
@@ -67,9 +67,8 @@ char	*get_next_line(int fd)
 			return (NULL);
 		}
 	}
-	
 	if (aux)
-		while (aux[i] && aux[i] != '\n') //TODO Line en la que ocurre el segmentation fault
+		while (aux[i] && aux[i] != '\n')
 			i++;
 	line = ft_substr(aux, 0, i);
 	aux = ft_substr(aux, i + 1, ft_strlen(aux) - ft_strlen(line));
@@ -78,7 +77,7 @@ char	*get_next_line(int fd)
 	return (line);
 }
 
-/*int	main(void)
+int	main(void)
 {
 	int		fd;
 	char	*test;
@@ -97,4 +96,4 @@ char	*get_next_line(int fd)
 	test = get_next_line(fd);
 	printf("Testeando tercer resultado: %s\n", test);
 	return (0);
-}*/
+}
