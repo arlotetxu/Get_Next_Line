@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jflorido <jflorido@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jflorido <jflorido@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 18:36:10 by jflorido          #+#    #+#             */
-/*   Updated: 2022/11/26 13:34:26 by jflorido         ###   ########.fr       */
+/*   Updated: 2022/12/02 19:03:09 by jflorido         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,18 +24,18 @@ int	ft_strchr(const char *s, int c)
 	char	*str;
 
 	if (!s)
-		return (-1);
+		return (0);
 	str = (char *)s;
 	i = 0;
+	if (((char)c) == '\0')
+		return (i);
 	while (str[i] != '\0')
 	{
 		if (str[i] == ((char)c))
 			return (i);
 		i++;
 	}
-	if (((char)c) == '\0')
-		return (i);
-	return (-1);
+	return (0);
 }
 
 /*		
@@ -101,31 +101,31 @@ size_t	ft_strlen(const char *s)
 * return a pointer to the final string.
 */
 
-char	*ft_strjoin_gnl(char const *s1, char const *s2)
+char	*ft_strjoin_gnl(char *s1, char *s2)
 {
 	char	*n_str;
 	int		i;
 	int		j;
 
-	i = 0;
+	if (!s1)
+	{
+		s1 = (char *)malloc (1 * sizeof(char));
+		s1[0] = '\0';
+	}
+	if (!s1 || !s2)
+		return (NULL);
 	n_str = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
 	if (n_str == NULL)
 		return (NULL);
+	i = -1;
 	if (s1)
-	{
-		while (s1[i])
-		{
+		while (s1[++i])
 			n_str[i] = s1[i];
-			i++;
-		}
-	}
 	j = 0;
 	while (s2[j])
-	{
-		n_str[i] = s2[j];
-		i++;
-		j++;
-	}
-	n_str[i] = '\0';
+		n_str[i++] = s2[j++];
+	n_str[i++] = '\0';
+	free(s1);
 	return (n_str);
 }
+

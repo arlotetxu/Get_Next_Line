@@ -6,7 +6,7 @@
 /*   By: jflorido <jflorido@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 18:29:46 by jflorido          #+#    #+#             */
-/*   Updated: 2022/11/27 19:52:42 by jflorido         ###   ########.fr       */
+/*   Updated: 2022/12/01 18:28:30 by jflorido         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@
 int		ft_strchr(const char *s, int c);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 size_t	ft_strlen(const char *s);
-char	*ft_strjoin_gnl(char const *s1, char const *s2);
-char	*ft_read_file(int fd, char *aux, int *check);
+char	*ft_strjoin_gnl(char *s1, char *s2);
+char	*ft_read_file(int fd, char *aux);
 char	*get_next_line(int fd);
 
 #endif
