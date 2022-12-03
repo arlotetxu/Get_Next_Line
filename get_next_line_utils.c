@@ -6,7 +6,7 @@
 /*   By: jflorido <jflorido@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 18:36:10 by jflorido          #+#    #+#             */
-/*   Updated: 2022/12/03 13:07:54 by jflorido         ###   ########.fr       */
+/*   Updated: 2022/12/03 13:13:12 by jflorido         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,8 @@ int	ft_strchr(const char *s, int c)
 // 	ptr[j] = '\0';
 // 	return (ptr);
 // }
+
+
 
 char	*ft_substr_line(char *s)
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jflorido <jflorido@student.42urduliz.co    +#+  +:+       +#+        */
+/*   By: jflorido <jflorido@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 18:29:46 by jflorido          #+#    #+#             */
-/*   Updated: 2022/12/01 18:28:30 by jflorido         ###   ########.fr       */
+/*   Updated: 2022/12/03 12:57:44 by jflorido         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,9 @@
 
 //put your function headers here
 int		ft_strchr(const char *s, int c);
-char	*ft_substr(char const *s, unsigned int start, size_t len);
+//char	*ft_substr(char const *s, unsigned int start, size_t len);
+char	*ft_substr_line(char *s);
+char	*ft_substr_aux(char *s);
 size_t	ft_strlen(const char *s);
 char	*ft_strjoin_gnl(char *s1, char *s2);
 char	*ft_read_file(int fd, char *aux);
