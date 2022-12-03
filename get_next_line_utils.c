@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jflorido <jflorido@student.42urduliz.co    +#+  +:+       +#+        */
+/*   By: jflorido <jflorido@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 18:36:10 by jflorido          #+#    #+#             */
-/*   Updated: 2022/12/02 19:03:09 by jflorido         ###   ########.fr       */
+/*   Updated: 2022/12/03 13:07:54 by jflorido         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,28 +44,90 @@ int	ft_strchr(const char *s, int c)
 * The ft_substr creates a substring starting from the start value
 * parameter and with the total size of 'len' parameter
  */
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+// char	*ft_substr(char const *s, unsigned int start, size_t len)
+// {
+// 	size_t	j;
+// 	size_t	i;
+// 	char	*ptr;
+
+// 	if (!s)
+// 		return (NULL);
+// 	if (len > ft_strlen(s))
+// 		len = ft_strlen(s);
+// 	i = 0;
+// 	j = 0;
+// 	ptr = malloc(sizeof(char) * (len + 1));
+// 	if (ptr == NULL)
+// 		return (NULL);
+// 	while (s[i] != '\0')
+// 	{
+// 		if (i >= start && j <= len)
+// 		{
+// 			ptr[j] = s[i];
+// 			j++;
+// 		}
+// 		i++;
+// 	}
+// 	ptr[j] = '\0';
+// 	return (ptr);
+// }
+
+char	*ft_substr_line(char *s)
 {
-	size_t	j;
 	size_t	i;
 	char	*ptr;
 
 	if (!s)
 		return (NULL);
-	if (len > ft_strlen(s))
-		len = ft_strlen(s);
+	// if (len > ft_strlen(s))
+	// 	len = ft_strlen(s);
 	i = 0;
-	j = 0;
-	ptr = malloc(sizeof(char) * (len + 1));
+	while (s[i] && s[i] != '\n')
+		i++;
+	ptr = malloc(sizeof(char) * (i + 2));
 	if (ptr == NULL)
 		return (NULL);
-	while (s[i] != '\0')
+	i = 0;
+	while (s[i] && s[i] != '\n')
 	{
-		if (i >= start && j <= len)
-		{
-			ptr[j] = s[i];
-			j++;
-		}
+		ptr[i] = s[i];
+		i++;
+	}
+	if (s[i] == '\n')
+	{
+		ptr[i] = s[i];
+		i++;
+	}
+	ptr[i] = '\0';
+	return (ptr);
+}
+
+/*
+ * To clean aux after return line
+ */
+char	*ft_substr_aux(char *s)
+{
+	size_t	i;
+	size_t	j;
+	size_t	len;
+	char	*ptr;
+
+	if (!s)
+		return (NULL);
+	i = 0;
+	len = ft_strlen(s);
+	while (s[i] && s[i] != '\n')
+		i++;
+	if (s[i] && s[i] == '\n')
+		i++;
+	ptr = malloc(sizeof(char) * (len - i + 1));
+	if (ptr == NULL)
+		return (NULL);
+	j = 0;
+	while (s[i] && s[i] != '\0')
+	{
+		ptr[j] = s[i];
+		j++;
 		i++;
 	}
 	ptr[j] = '\0';
