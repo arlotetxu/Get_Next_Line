@@ -10,9 +10,9 @@
 		"stopAtEntry": false,
 		"cwd": "${workspaceFolder}",
 		"environment": [],
-		"externalConsole": false,
+		"externalConsole": true,
 		"MIMode": "lldb",
-		"preLaunchTask": "comp",
+		// "preLaunchTask": "comp",
 		"postDebugTask": "clean"
 	  }
 	]
