@@ -6,7 +6,7 @@
 /*   By: jflorido <jflorido@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 18:36:10 by jflorido          #+#    #+#             */
-/*   Updated: 2022/12/03 13:13:12 by jflorido         ###   ########.fr       */
+/*   Updated: 2022/12/03 15:06:28 by jflorido         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,11 @@ char	*ft_substr_aux(char *s)
 		i++;
 	if (s[i] && s[i] == '\n')
 		i++;
+	// if (!s[i])
+	// {
+	// 	free (s);
+	// 	return (NULL);
+	// }
 	ptr = malloc(sizeof(char) * (len - i + 1));
 	if (ptr == NULL)
 		return (NULL);
@@ -133,6 +138,7 @@ char	*ft_substr_aux(char *s)
 		i++;
 	}
 	ptr[j] = '\0';
+	free (s);
 	return (ptr);
 }
 

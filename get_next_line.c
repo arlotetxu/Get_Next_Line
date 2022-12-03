@@ -6,7 +6,7 @@
 /*   By: jflorido <jflorido@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 18:38:50 by jflorido          #+#    #+#             */
-/*   Updated: 2022/12/03 13:12:58 by jflorido         ###   ########.fr       */
+/*   Updated: 2022/12/03 15:52:02 by jflorido         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,23 +88,28 @@ char	*get_next_line(int fd)
 	return (line);
 }
 
-// int	main(void)
-// {
-// 	int		fd;
-// 	char	*test;
+int	main(void)
+{
+	int		fd;
+	char	*test;
 
-// 	fd = open("testing.txt", O_RDONLY);
-// 	if (fd == -1)
-// 	{
-// 		printf("File open error");
-// 		return (0);
-// 	}
-// 	else
-// 	test = get_next_line(fd);
-// 	printf("Testeando resultado: %s\n", test);
-// 	test = get_next_line(fd);
-// 	printf("Testeando segundo resultado: %s\n", test);
-// 	// test = get_next_line(fd);
-// 	// printf("Testeando tercer resultado: %s\n", test);
-// 	return (0);
-// }
+	fd = open("testing.txt", O_RDONLY);
+	if (fd == -1)
+	{
+		printf("File open error");
+		return (0);
+	}
+	else
+	test = get_next_line(fd);
+	printf("Testeando resultado: %s\n", test);
+	free (test);
+	// test = get_next_line(fd);
+	// printf("Testeando segundo resultado: %s\n", test);
+	// test = get_next_line(fd);
+	// printf("Testeando tercer resultado: %s\n", test);
+	// test = get_next_line(fd);
+	// printf("Testeando tercer resultado: %s\n", test);
+	// test = get_next_line(fd);
+	// printf("Testeando tercer resultado: %s\n", test);
+	return (0);
+}
