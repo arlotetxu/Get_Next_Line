@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jflorido <jflorido@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jflorido <jflorido@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 18:36:10 by jflorido          #+#    #+#             */
-/*   Updated: 2022/12/03 15:06:28 by jflorido         ###   ########.fr       */
+/*   Updated: 2022/12/04 10:56:12 by jflorido         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,14 @@
 
 /*		
 * DESCRIPTION
-* ***********
+* *****************************************************************************
 * The strchr() function locates the first given character in a string.
 * It mimics the strchr function from the string library.
+*
+* @param "s" as the original string.
+* @param "c" as the character to be located in "s" string.
+* 
+* @return A pointer to a string with remaining characters.
 */
 int	ft_strchr(const char *s, int c)
 {
@@ -40,39 +45,14 @@ int	ft_strchr(const char *s, int c)
 
 /*		
 * DESCRIPTION
-* ***********
-* The ft_substr creates a substring starting from the start value
-* parameter and with the total size of 'len' parameter
- */
-// char	*ft_substr(char const *s, unsigned int start, size_t len)
-// {
-// 	size_t	j;
-// 	size_t	i;
-// 	char	*ptr;
-
-// 	if (!s)
-// 		return (NULL);
-// 	if (len > ft_strlen(s))
-// 		len = ft_strlen(s);
-// 	i = 0;
-// 	j = 0;
-// 	ptr = malloc(sizeof(char) * (len + 1));
-// 	if (ptr == NULL)
-// 		return (NULL);
-// 	while (s[i] != '\0')
-// 	{
-// 		if (i >= start && j <= len)
-// 		{
-// 			ptr[j] = s[i];
-// 			j++;
-// 		}
-// 		i++;
-// 	}
-// 	ptr[j] = '\0';
-// 	return (ptr);
-// }
-
-
+* *****************************************************************************
+* The ft_substr_line creates a substring starting from the beginning until 
+* a '\n' is found.
+*
+* @param ""s" as the original string.
+* 
+* @return A pointer to a string with the first line.
+*/
 
 char	*ft_substr_line(char *s)
 {
@@ -81,8 +61,6 @@ char	*ft_substr_line(char *s)
 
 	if (!s)
 		return (NULL);
-	// if (len > ft_strlen(s))
-	// 	len = ft_strlen(s);
 	i = 0;
 	while (s[i] && s[i] != '\n')
 		i++;
@@ -104,39 +82,35 @@ char	*ft_substr_line(char *s)
 	return (ptr);
 }
 
-/*
- * To clean aux after return line
+/* 
+ * DESCRIPTION
+ * *****************************************************************************
+ * Create a substring from the '\n' first ocurrence till the end of the original
+ * string.
+ * 
+ * @param ""s" as the original string.
+ * 
+ * @return A pointer to a string with remaining characters.
  */
 char	*ft_substr_aux(char *s)
 {
 	size_t	i;
 	size_t	j;
-	size_t	len;
 	char	*ptr;
 
 	if (!s)
 		return (NULL);
 	i = 0;
-	len = ft_strlen(s);
 	while (s[i] && s[i] != '\n')
 		i++;
 	if (s[i] && s[i] == '\n')
 		i++;
-	// if (!s[i])
-	// {
-	// 	free (s);
-	// 	return (NULL);
-	// }
-	ptr = malloc(sizeof(char) * (len - i + 1));
+	ptr = malloc(sizeof(char) * (ft_strlen(s) - i + 1));
 	if (ptr == NULL)
 		return (NULL);
 	j = 0;
 	while (s[i] && s[i] != '\0')
-	{
-		ptr[j] = s[i];
-		j++;
-		i++;
-	}
+		ptr[j++] = s[i++];
 	ptr[j] = '\0';
 	free (s);
 	return (ptr);
@@ -144,10 +118,14 @@ char	*ft_substr_aux(char *s)
 
 /*		
 * DESCRIPTION
-* ***********
+* *****************************************************************************
 * The function ft_strlen() mimics the behavior of the strlen() function from
 * string C library. Both functions returns the number of characters that
 * precede the terminating NULL character in a string.
+*
+* @param "s" as the original string.
+* 
+* @return "n" as the number of character in the string.
 */
 
 size_t	ft_strlen(const char *s)
@@ -164,11 +142,16 @@ size_t	ft_strlen(const char *s)
 
 /*
 * DESCRIPTION
-* ***********
-* The ft_strjoin() function concatenates 2 different string allocating
+* *****************************************************************************
+* The ft_strjoin_gnl() function concatenates 2 different string allocating
 * enought memory in the system. If there are not strings or memory
 * allocation fails, the function return null. Otherwise, the function
 * return a pointer to the final string.
+*
+* @param "s1" as first string.
+* @param "s2" as second string
+* 
+* @return "n_str" as the new string concatenated.
 */
 
 char	*ft_strjoin_gnl(char *s1, char *s2)
@@ -182,7 +165,7 @@ char	*ft_strjoin_gnl(char *s1, char *s2)
 		s1 = (char *)malloc (1 * sizeof(char));
 		s1[0] = '\0';
 	}
-	if (!s1 || !s2)
+	if (!s2)
 		return (NULL);
 	n_str = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
 	if (n_str == NULL)
@@ -198,4 +181,3 @@ char	*ft_strjoin_gnl(char *s1, char *s2)
 	free(s1);
 	return (n_str);
 }
-

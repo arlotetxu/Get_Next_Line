@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jflorido <jflorido@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jflorido <jflorido@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 18:38:50 by jflorido          #+#    #+#             */
-/*   Updated: 2022/12/03 15:52:02 by jflorido         ###   ########.fr       */
+/*   Updated: 2022/12/04 10:37:28 by jflorido         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,23 @@
 #include <stdio.h>
 
 /*
- * Function that reads the file considering the BUFFER_SIZE size
- * define in the header (.h) file and stores the content in the array buff.
+ * @DESCRIPTION
+ * ****************************************************************************
+ * Function that reads a file considering the BUFFER_SIZE varible (bytes to
+ * read) defined in the header file (.h) and stores the content in the array
+ * "buff".After each reading process, the function stores the read 
+ * characters in the "aux" STATIC VARIABLE.
+ * The functions continues until a '\n' character is found or no charater is
+ * read.
  * WARNING: the read function keeps the last position you read.
- * That means that if you read 14 bytes, the next read will start
- * in the 15 byte. For that reason it is needed a static variable where to
- * keep the remaining characters after a /n character is found.
+ * That means that if you read 14 bytes, the next read iteration will start
+ * in the 15 byte. For that reason it is needed a STATIC VARIBLE where to
+ * keep the remaining characters in after a '/n' character is found.
+ *
+ * @param fd file descriptor
+ * @param aux This is the string that will be returned.
+ * 
+ * @return a pointer to a string.
  */
 char	*ft_read_file(int fd, char *aux)
 {
@@ -35,7 +46,6 @@ char	*ft_read_file(int fd, char *aux)
 		check = read(fd, buff, BUFFER_SIZE);
 		if (check == 0)
 			break ;
-			//return (aux);
 		if (check == -1)
 		{
 			free (buff);
@@ -49,35 +59,27 @@ char	*ft_read_file(int fd, char *aux)
 }
 
 /*
-* The function that controls the program execution.
-* ALARM: How to know if you are reading the last line.
-* We control this thanks to the value in the check variable
-* that stores the number of bytes read excep for the first
-* launch that has a 1 value.
+* @DESCRIPTION
+* *****************************************************************************
+* Function that receives a string with a '\n' character and cut the string
+* from the beginning to the firstocurrence of '\n'. The remaining characters
+* are kept in the STATIC VARIABLE "aux".
+*
+* @param fd file descriptor
+* 
+* @return A pointer to a string with a line.
 */
 char	*get_next_line(int fd)
 {
 	static char	*aux;
 	char		*line;
-	int			i;
 
-	i = 0;
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	aux = ft_read_file(fd, aux);
 	if (!aux)
 		return (NULL);
-	if (!ft_strlen(aux))
-	{
-		free(aux);
-		return (NULL);
-	}
-	// while (aux[i] && aux[i] != '\n')
-	// 	i++;
-	// if (aux[i] && aux[i] == '\n')
-	// 	i++;
 	line = ft_substr_line(aux);
-	// mirar el leak de ft_substr(aux
 	if ((ft_strlen(aux) - ft_strlen(line)) == 0)
 	{
 		free (aux);
@@ -88,28 +90,28 @@ char	*get_next_line(int fd)
 	return (line);
 }
 
-int	main(void)
-{
-	int		fd;
-	char	*test;
+// int	main(void)
+// {
+// 	int		fd;
+// 	char	*test;
 
-	fd = open("testing.txt", O_RDONLY);
-	if (fd == -1)
-	{
-		printf("File open error");
-		return (0);
-	}
-	else
-	test = get_next_line(fd);
-	printf("Testeando resultado: %s\n", test);
-	free (test);
-	// test = get_next_line(fd);
-	// printf("Testeando segundo resultado: %s\n", test);
-	// test = get_next_line(fd);
-	// printf("Testeando tercer resultado: %s\n", test);
-	// test = get_next_line(fd);
-	// printf("Testeando tercer resultado: %s\n", test);
-	// test = get_next_line(fd);
-	// printf("Testeando tercer resultado: %s\n", test);
-	return (0);
-}
+// 	fd = open("testing.txt", O_RDONLY);
+// 	if (fd == -1)
+// 	{
+// 		printf("File open error");
+// 		return (0);
+// 	}
+// 	else
+// 	test = get_next_line(fd);
+// 	printf("Testeando resultado: %s\n", test);
+// 	free (test);
+// 	// test = get_next_line(fd);
+// 	// printf("Testeando segundo resultado: %s\n", test);
+// 	// test = get_next_line(fd);
+// 	// printf("Testeando tercer resultado: %s\n", test);
+// 	// test = get_next_line(fd);
+// 	// printf("Testeando tercer resultado: %s\n", test);
+// 	// test = get_next_line(fd);
+// 	// printf("Testeando tercer resultado: %s\n", test);
+// 	return (0);
+// }
