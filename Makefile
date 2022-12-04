@@ -13,10 +13,10 @@ NAME = ft_gnl.a
 
 SRC = 	get_next_line.c get_next_line_utils.c
 
-#SRC_Bonus =
+SRC_Bonus = get_next_line_bonus.c get_next_line_utils_bonus.c
 
 OBJS = $(SRC:.c=.o)
-#OBJS_Bonus = $(SRC_Bonus:.c=.o)
+OBJS_Bonus = $(SRC_Bonus:.c=.o)
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
@@ -34,8 +34,8 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	@$(AR) $(AFLAG) $(NAME) $^
 
-#bonus: $(OBJS) $(OBJS_Bonus)
-#	$(AR) $(AFLAG) $(NAME) $^
+bonus: $(OBJS) $(OBJS_Bonus)
+	$(AR) $(AFLAG) $(NAME) $^
 
 clean:
 	$(RM) $(OBJS)
