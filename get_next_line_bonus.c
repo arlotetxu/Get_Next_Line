@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jflorido <jflorido@student.42urduliz.co    +#+  +:+       +#+        */
+/*   By: jflorido <jflorido@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 18:38:50 by jflorido          #+#    #+#             */
-/*   Updated: 2022/12/04 12:12:58 by jflorido         ###   ########.fr       */
+/*   Updated: 2022/12/05 12:42:15 by jflorido         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,9 @@
  * @param aux This is the string that will be returned.
  * 
  * @return a pointer to a string.
+ *
+ * @TIP --> add function system("leaks a.out") in a point you want to check
+ * memory leaks
  */
 char	*ft_read_file(int fd, char *aux)
 {
@@ -49,6 +52,7 @@ char	*ft_read_file(int fd, char *aux)
 		if (check == -1)
 		{
 			free (buff);
+			free (aux);
 			return (NULL);
 		}
 		buff[check] = '\0';

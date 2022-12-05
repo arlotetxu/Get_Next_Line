@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jflorido <jflorido@student.42urduliz.co    +#+  +:+       +#+        */
+/*   By: jflorido <jflorido@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 18:38:50 by jflorido          #+#    #+#             */
-/*   Updated: 2022/12/04 10:37:28 by jflorido         ###   ########.fr       */
+/*   Updated: 2022/12/05 12:42:01 by jflorido         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,9 @@
  * @param aux This is the string that will be returned.
  * 
  * @return a pointer to a string.
+ *
+ * @TIP --> add function system("leaks a.out") in a point you want to check
+ * memory leaks
  */
 char	*ft_read_file(int fd, char *aux)
 {
@@ -48,6 +51,7 @@ char	*ft_read_file(int fd, char *aux)
 			break ;
 		if (check == -1)
 		{
+			free (aux);
 			free (buff);
 			return (NULL);
 		}
@@ -103,15 +107,15 @@ char	*get_next_line(int fd)
 // 	}
 // 	else
 // 	test = get_next_line(fd);
-// 	printf("Testeando resultado: %s\n", test);
+// 	printf("Testing first result: %s\n", test);
 // 	free (test);
-// 	// test = get_next_line(fd);
-// 	// printf("Testeando segundo resultado: %s\n", test);
-// 	// test = get_next_line(fd);
-// 	// printf("Testeando tercer resultado: %s\n", test);
-// 	// test = get_next_line(fd);
-// 	// printf("Testeando tercer resultado: %s\n", test);
-// 	// test = get_next_line(fd);
-// 	// printf("Testeando tercer resultado: %s\n", test);
+// 	test = get_next_line(fd);
+// 	printf("Testing second result: %s\n", test);
+// 	test = get_next_line(fd);
+// 	printf("Testing third result: %s\n", test);
+// 	test = get_next_line(fd);
+// 	printf("Testing fourth result: %s\n", test);
+// 	test = get_next_line(fd);
+// 	printf("Testing fifth result: %s\n", test);
 // 	return (0);
 // }
