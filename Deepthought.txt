@@ -1,0 +1,34 @@
+= Collected files ==========================================
+$> ls -lAR /tmp/tmp5qnl_spo/user
+total 72
+-rw-r--r--  1 root  wheel   596 Dec  5 12:34 __GIT_HISTORY
+-rw-r--r--  1 root  wheel  3555 Dec  5 12:34 get_next_line.c
+-rw-r--r--  1 root  wheel  1362 Dec  5 12:34 get_next_line.h
+-rw-r--r--  1 root  wheel  3719 Dec  5 12:34 get_next_line_bonus.c
+-rw-r--r--  1 root  wheel  1374 Dec  5 12:34 get_next_line_bonus.h
+-rw-r--r--  1 root  wheel  4299 Dec  5 12:34 get_next_line_utils.c
+-rw-r--r--  1 root  wheel  4305 Dec  5 12:34 get_next_line_utils_bonus.c
+
+= basic_tests ==================================================================
+$> /usr/bin/norminette  get_next_line_bonus.c get_next_line_utils.c get_next_line_bonus.h get_next_line.h get_next_line_utils_bonus.c get_next_line.c | grep -E '^(Error|Warning)'
+
+>>>>>>>>>>> 1
+>>>>>>>>>>> 2
+>>>>>>>>>>> 3
+>>>>>>>>>>> 4
+
+>>>>>>>>>>> 5
+
+>>>>>>>>>>> 1
+>>>>>>>>>>> 2
+>>>>>>>>>>> 3
+>>>>>>>>>>> 4
+
+GNL OK
+Grade: 100
+
+= bonus_tests ==================================================================
+GNL OK
+Grade: 25
+
+= Final grade: 125 =============================================================
